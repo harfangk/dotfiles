@@ -92,6 +92,11 @@ bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward  
 
+# Fix zsh issues with Home, End, Delete keys
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+bindkey "${terminfo[kdch1]}" delete-char
+
 setopt AUTO_CD
 
 function virtualenv_info {
@@ -102,5 +107,4 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || hostname -s
 }
 
-
-alias config='/usr/bin/git --gir-dir=/Users/bonghyunkim/.config/ --work-tree=/Users/bonghyunkim'
+alias config='/usr/bin/git --git-dir=/Users/bonghyunkim/.config/ --work-tree=/Users/bonghyunkim'
