@@ -32,9 +32,9 @@ Plugin 'kana/vim-textobj-user' " Allow creation of custom text objects
 Plugin 'reedes/vim-pencil' " Writing tool for vim
 Plugin 'reedes/vim-textobj-sentence' " Improve sentence text object detection
 Plugin 'raimondi/delimitMate' " Autoclose parantheses
-Plugin 'vim-scripts/closetag.vim' " Easier closing of HTML tags
 Plugin 'mattn/emmet-vim' " Expanding HTML abbreviations support
 Plugin 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
+Plugin 'vim-ruby/vim-ruby' " Vim-ruby
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -145,3 +145,7 @@ let NERDTreeAutoDeleteBuffer = 1
 " Ctrlp setup
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" Omnifunc setup
+filetype plugin on
+set omnifunc
