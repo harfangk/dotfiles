@@ -145,7 +145,3 @@ let NERDTreeAutoDeleteBuffer = 1
 " Ctrlp setup
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-
-" Omnifunc setup
-filetype plugin on
-set omnifunc
