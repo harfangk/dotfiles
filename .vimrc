@@ -35,6 +35,7 @@ Plugin 'raimondi/delimitMate' " Autoclose parantheses
 Plugin 'mattn/emmet-vim' " Expanding HTML abbreviations support
 Plugin 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
 Plugin 'vim-ruby/vim-ruby' " Vim-ruby
+Plugin 'christoomey/vim-tmux-navigator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -103,6 +104,12 @@ noremap ; :
 noremap : ;
 nnoremap j gj
 nnoremap k gk
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 
 " Coloring
 colorscheme solarized
