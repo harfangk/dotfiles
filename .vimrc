@@ -35,7 +35,8 @@ Plugin 'raimondi/delimitMate' " Autoclose parantheses
 Plugin 'mattn/emmet-vim' " Expanding HTML abbreviations support
 Plugin 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
 Plugin 'vim-ruby/vim-ruby' " Vim-ruby
-Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator' " Allow seamless transition between vim splits and tmux panes
+Plugin 'elixir-lang/vim-elixir' " Vim-elixir
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -129,7 +130,7 @@ nnoremap <F6> :call BgToggleSol()<CR>
 " vim-pencil setup
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init({'wrap': 'soft'})
+  autocmd FileType markdown,mkd,md call pencil#init()
 augroup END
 
 " vim-textobj-sentence setup
