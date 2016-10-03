@@ -1,0 +1,8 @@
+{
+  "eelixir": {
+    "extends": "html",
+    "snippets": {
+      "eex": "<%= | %>\n\t${child}<% end %>"
+    }
+  }
+}

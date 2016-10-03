@@ -33,6 +33,7 @@ Plugin 'reedes/vim-pencil' " Writing tool for vim
 Plugin 'reedes/vim-textobj-sentence' " Improve sentence text object detection
 Plugin 'raimondi/delimitMate' " Autoclose parantheses
 Plugin 'mattn/emmet-vim' " Expanding HTML abbreviations support
+Plugin 'mattn/webapi-vim' " vim interface to Web API. Installed for custom emmet snippet supprt
 Plugin 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
 Plugin 'vim-ruby/vim-ruby' " Vim-ruby
 Plugin 'christoomey/vim-tmux-navigator' " Allow seamless transition between vim splits and tmux panes
@@ -153,3 +154,6 @@ let NERDTreeAutoDeleteBuffer = 1
 " Ctrlp setup
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" Emmet setting
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom_emmet.json')), "\n"))
