@@ -38,6 +38,7 @@ Plugin 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
 Plugin 'vim-ruby/vim-ruby' " Vim-ruby
 Plugin 'christoomey/vim-tmux-navigator' " Allow seamless transition between vim splits and tmux panes
 Plugin 'elixir-lang/vim-elixir' " Vim-elixir
+Plugin 'pangloss/vim-javascript' " Vim-javascript
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
