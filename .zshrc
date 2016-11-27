@@ -107,4 +107,12 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || hostname -s
 }
 
+# Path setting for exercism
+export PATH="$HOME/bin:$PATH"
+
+# Remap CAPS-lock for Ubuntu 16.04 by running xmodmap
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+  xmodmap ~/.Xmodmap
+fi
+
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
