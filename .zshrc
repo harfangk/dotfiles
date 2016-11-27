@@ -107,4 +107,4 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || hostname -s
 }
 
-alias dotfiles='/usr/bin/git --git-dir=/Users/bonghyunkim/.dotfiles.git/ --work-tree=/Users/bonghyunkim'
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
