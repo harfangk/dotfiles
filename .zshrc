@@ -111,7 +111,7 @@ function box_name {
 export PATH="$HOME/bin:$PATH"
 
 # Remap CAPS-lock for Ubuntu 16.04 by running xmodmap
-if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   xmodmap ~/.Xmodmap
 fi
 
