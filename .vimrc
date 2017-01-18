@@ -39,6 +39,9 @@ Plugin 'vim-ruby/vim-ruby' " Vim-ruby
 Plugin 'christoomey/vim-tmux-navigator' " Allow seamless transition between vim splits and tmux panes
 Plugin 'elixir-lang/vim-elixir' " Vim-elixir
 Plugin 'pangloss/vim-javascript' " Vim-javascript
+Plugin 'eagletmt/neco-ghc' " Autocompletion for Haskell
+Plugin 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
+Plugin 'Shougo/vimproc.vim' " Vimproc for GHC-mod
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -158,3 +161,10 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Emmet setting
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom_emmet.json')), "\n"))
+
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+" Enable neco-ghc for ycm
+let g:ycm_semantic_triggers = {'haskell' : ['.']}

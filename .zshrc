@@ -110,6 +110,9 @@ function box_name {
 # Path setting for exercism
 export PATH="$HOME/bin:$PATH"
 
+# Path setting for Haskell Stack
+export PATH="$HOME/.local/bin:$PATH"
+
 # Remap CAPS-lock for Ubuntu 16.04 by running xmodmap
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
   xmodmap ~/.Xmodmap
