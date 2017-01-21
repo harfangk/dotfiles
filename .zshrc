@@ -114,8 +114,14 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Remap CAPS-lock for Ubuntu 16.04 by running xmodmap
-if [ "$(uname 2> /dev/null)" = "Linux" ]; then
-  xmodmap ~/.Xmodmap
+if [ "$(uname -s)" == "Linux" ]; then
+  if [[ `cat /etc/*-release | grep 'DISTRIB_ID'` == *Ubuntu* ]]; then
+    xmodmap ~/.Xmodmap
+  fi
+elif [ "$(uname -s)" == "Darwin" ]; then
+  bindkey -e
+  bindkey "^[[1;9C" forward-word
+  bindkey "^[[1;9D" backward-word
 fi
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
