@@ -43,6 +43,7 @@ Plugin 'pangloss/vim-javascript' " Vim-javascript
 Plugin 'eagletmt/neco-ghc' " Autocompletion for Haskell
 Plugin 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
 Plugin 'Shougo/vimproc.vim' " Vimproc for GHC-mod
+Plugin 'elmcast/elm-vim' " Elm support
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,7 +68,11 @@ set history=700 " Lines of vim history
 set autoread " auto read when a file is changed from outside
 set encoding=utf-8 " default encoding
 setglobal fileencoding=utf-8
-set clipboard=unnamed " use system clipboard
+if system('uname -s') == "Darwin\n" " use system clipboard
+  set clipboard=unnamed 
+else
+  set clipboard=unnamedplus
+endif
 set wildmenu
 set laststatus=2
 
