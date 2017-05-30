@@ -125,6 +125,7 @@ fi
 # Chruby setting
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
+chruby ruby-2.4.1
 
 # Alias for dotfiles command
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
