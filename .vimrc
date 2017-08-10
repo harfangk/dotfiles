@@ -44,6 +44,7 @@ Plugin 'eagletmt/neco-ghc' " Autocompletion for Haskell
 Plugin 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
 Plugin 'Shougo/vimproc.vim' " Vimproc for GHC-mod
 Plugin 'elmcast/elm-vim' " Elm support
+Plugin 'idris-hackers/idris-vim' " Idris support
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
