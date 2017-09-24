@@ -45,6 +45,7 @@ Plugin 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
 Plugin 'Shougo/vimproc.vim' " Vimproc for GHC-mod
 Plugin 'elmcast/elm-vim' " Elm support
 Plugin 'idris-hackers/idris-vim' " Idris support
+Plugin 'raichoo/purescript-vim' " Purescript support
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -128,16 +129,6 @@ nnoremap <c-l> <c-w>l
 colorscheme solarized
 let g:solarized_termtrans = 1
 set background=dark
-
-function! BgToggleSol()
-  if &background == "light"
-    execute ":set background=dark"
-  else
-    execute ":set background=light"
-  endif
-endfunction
-
-nnoremap <F6> :call BgToggleSol()<CR>
 
 " vim-pencil setup
 augroup pencil
