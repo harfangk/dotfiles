@@ -1,67 +1,53 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-" 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
+call plug#begin()
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive' " Git support within vim
-Plugin 'tpope/vim-endwise' " Automatically adds end to ruby files 
-Plugin 'tpope/vim-surround' " Edit tags or punctuations surrounding text units
-Plugin 'tpope/vim-repeat' " Allow . repeating for vim-surround
-Plugin 'tpope/vim-rails' " Vim plugin for everything rails
-Plugin 'scrooloose/nerdtree' " File navigator for vim
-Plugin 'scrooloose/syntastic' " Syntax checker
-Plugin 'scrooloose/nerdcommenter' " Easier comment manipulation
-Plugin 'altercation/vim-colors-solarized' " solarized color scheme
-Plugin 'vim-airline/vim-airline' " status/tabline provider
-Plugin 'majutsushi/tagbar' " Class outline viewer
-Plugin 'valloric/youcompleteme' " Fuzzy-search code completion engine
-Plugin 'ctrlpvim/ctrlp.vim' " Full path fuzzy file, ubffer, tag ... finder
-Plugin 'beloglazov/vim-online-thesaurus' " Online thesaurus!
-Plugin 'kana/vim-textobj-user' " Allow creation of custom text objects
-Plugin 'reedes/vim-pencil' " Writing tool for vim
-Plugin 'reedes/vim-textobj-sentence' " Improve sentence text object detection
-Plugin 'raimondi/delimitMate' " Autoclose parantheses
-Plugin 'mattn/emmet-vim' " Expanding HTML abbreviations support
-Plugin 'mattn/webapi-vim' " vim interface to Web API. Installed for custom emmet snippet supprt
-Plugin 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
-Plugin 'vim-ruby/vim-ruby' " Vim-ruby
-Plugin 'christoomey/vim-tmux-navigator' " Allow seamless transition between vim splits and tmux panes
-Plugin 'elixir-lang/vim-elixir' " Vim-elixir
-Plugin 'slashmili/alchemist.vim' " Vim tooling for Elixir
-Plugin 'pangloss/vim-javascript' " Vim-javascript
-Plugin 'eagletmt/neco-ghc' " Autocompletion for Haskell
-Plugin 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
-Plugin 'Shougo/vimproc.vim' " Vimproc for GHC-mod
-Plugin 'elmcast/elm-vim' " Elm support
-Plugin 'idris-hackers/idris-vim' " Idris support
-Plugin 'raichoo/purescript-vim' " Purescript support
+Plug 'tpope/vim-fugitive' " Git support within vim
+Plug 'tpope/vim-endwise' " Automatically adds end to ruby files 
+Plug 'tpope/vim-surround' " Edit tags or punctuations surrounding text units
+Plug 'tpope/vim-repeat' " Allow . repeating for vim-surround
+Plug 'tpope/vim-rails' " Vim plugin for everything rails
+Plug 'scrooloose/nerdtree' " File navigator for vim
+Plug 'scrooloose/syntastic' " Syntax checker
+Plug 'scrooloose/nerdcommenter' " Easier comment manipulation
+Plug 'altercation/vim-colors-solarized' " solarized color scheme
+Plug 'vim-airline/vim-airline' " status/tabline provider
+Plug 'majutsushi/tagbar' " Class outline viewer
+Plug 'ctrlpvim/ctrlp.vim' " Full path fuzzy file, ubffer, tag ... finder
+Plug 'beloglazov/vim-online-thesaurus' " Online thesaurus!
+Plug 'kana/vim-textobj-user' " Allow creation of custom text objects
+Plug 'reedes/vim-pencil' " Writing tool for vim
+Plug 'reedes/vim-textobj-sentence' " Improve sentence text object detection
+Plug 'raimondi/delimitMate' " Autoclose parantheses
+Plug 'mattn/emmet-vim' " Expanding HTML abbreviations support
+Plug 'mattn/webapi-vim' " vim interface to Web API. Installed for custom emmet snippet supprt
+Plug 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
+Plug 'vim-ruby/vim-ruby' " Vim-ruby
+Plug 'christoomey/vim-tmux-navigator' " Allow seamless transition between vim splits and tmux panes
+Plug 'elixir-lang/vim-elixir' " Vim-elixir
+Plug 'slashmili/alchemist.vim' " Vim tooling for Elixir
+Plug 'pangloss/vim-javascript' " Vim-javascript
+Plug 'eagletmt/neco-ghc' " Autocompletion for Haskell
+Plug 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
+Plug 'Shougo/vimproc.vim' " Vimproc for GHC-mod
+Plug 'elmcast/elm-vim' " Elm support
+Plug 'pbogut/deoplete-elm' " Deoplete plugin for Elm
+Plug 'idris-hackers/idris-vim' " Idris support
+Plug 'raichoo/purescript-vim' " Purescript support
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" Deoplete setup
+let g:deoplete#enable_at_startup = 1
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
 
 syntax on
 
@@ -77,9 +63,10 @@ else
 endif
 set wildmenu
 set laststatus=2
+set pyxversion=3
 
 " Text display
-set textwidth=79
+set textwidth=100
 set showmatch
 set cursorline
 set autoindent
@@ -156,6 +143,9 @@ let NERDTreeAutoDeleteBuffer = 1
 " Ctrlp setup
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/]\.(node_modules|elm-stuff)$',
+      \ }
 
 " Emmet setting
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom_emmet.json')), "\n"))
@@ -163,6 +153,14 @@ let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd filetype haskell setlocal shiftwidth=4 tabstop=4 expandtab
 
-" Enable neco-ghc for ycm
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+" Use eslint for JS
+let g:syntastic_javascript_checkers = ['eslint']
+
+" elm-vim settings
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:elm_syntastic_show_warnings = 1
+autocmd FileType elm setlocal shiftwidth=4 tabstop=4 expandtab

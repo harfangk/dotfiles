@@ -111,28 +111,14 @@ export PATH="$HOME/bin:$PATH"
 # Path setting for Haskell Stack
 export PATH="$HOME/.local/bin:$PATH"
 
-# Path setting for npm elm
-export PATH="$HOME/.npm-global/bin:$PATH"
-
-# Remap CAPS-lock for Ubuntu 16.04 by running xmodmap
-if [ "$(uname -s)" = "Linux" ]; then
-  if [[ `cat /etc/*-release | grep 'DISTRIB_ID'` == *Ubuntu* ]]; then
-    xmodmap ~/.Xmodmap
-  fi
-elif [ "$(uname -s)" = "Darwin" ]; then
-  bindkey -e
-  bindkey "^[[1;9C" forward-word
-  bindkey "^[[1;9D" backward-word
-fi
-
-# Chruby setting
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-chruby ruby-2.4.1
-
 # Alias for dotfiles command
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # Implement alias for pbcopy with xclip
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# asdf version manager setup
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+export PATH="${PATH}:$HOME/.deliver/bin"
