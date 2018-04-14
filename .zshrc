@@ -114,10 +114,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # Alias for dotfiles command
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-# Implement alias for pbcopy with xclip
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-
 # asdf version manager setup
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash

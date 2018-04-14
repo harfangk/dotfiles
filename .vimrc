@@ -15,10 +15,12 @@ Plug 'altercation/vim-colors-solarized' " solarized color scheme
 Plug 'vim-airline/vim-airline' " status/tabline provider
 Plug 'majutsushi/tagbar' " Class outline viewer
 Plug 'ctrlpvim/ctrlp.vim' " Full path fuzzy file, ubffer, tag ... finder
-Plug 'beloglazov/vim-online-thesaurus' " Online thesaurus!
 Plug 'kana/vim-textobj-user' " Allow creation of custom text objects
 Plug 'reedes/vim-pencil' " Writing tool for vim
 Plug 'reedes/vim-textobj-sentence' " Improve sentence text object detection
+Plug 'reedes/vim-lexical' " Build on Vim’s spell/thes/dict completion
+Plug 'reedes/vim-wordy' " Uncover usage problems in your writing
+Plug 'reedes/vim-litecorrect' " Lightweight auto-correction for Vim
 Plug 'raimondi/delimitMate' " Autoclose parantheses
 Plug 'mattn/emmet-vim' " Expanding HTML abbreviations support
 Plug 'mattn/webapi-vim' " vim interface to Web API. Installed for custom emmet snippet supprt
@@ -56,11 +58,7 @@ set history=700 " Lines of vim history
 set autoread " auto read when a file is changed from outside
 set encoding=utf-8 " default encoding
 setglobal fileencoding=utf-8
-if system('uname -s') == "Darwin\n" " use system clipboard
-  set clipboard=unnamed 
-else
-  set clipboard=unnamedplus
-endif
+set clipboard=unnamedplus,unnamed
 set wildmenu
 set laststatus=2
 set pyxversion=3
@@ -121,12 +119,29 @@ set background=dark
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,md call pencil#init()
+  autocmd FileType textile call pencil#init()
 augroup END
 
 " vim-textobj-sentence setup
 augroup textobj_sentence
   autocmd!
   autocmd FileType markdown,mkd,md call textobj#sentence#init()
+  autocmd FileType textile call textobj#sentence#init()
+augroup END
+
+" vim-lexical setup
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd,md call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init()
+augroup END
+
+" vim-litecorrect setup
+augroup litecorrect
+  autocmd!
+  autocmd FileType markdown,mkd call litecorrect#init()
+  autocmd FileType textile call litecorrect#init()
 augroup END
 
 " vim-ragtag setup
@@ -143,9 +158,7 @@ let NERDTreeAutoDeleteBuffer = 1
 " Ctrlp setup
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v[\/]\.(node_modules|elm-stuff)$',
-      \ }
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 
 " Emmet setting
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom_emmet.json')), "\n"))
