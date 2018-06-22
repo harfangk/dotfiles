@@ -6,5 +6,4 @@ Things to do after a fresh Ubuntu setup:
 1. Install shared tools: git, vim, tmux, curl, zsh
 2. Install dotfiles
 3. Install Vim plugin manager and plugins
-4. Install programming languages: ruby, elixir, node.js, haskell 
-5. Compile for Vim plugin YouCompleteMe
+4. Install programming languages
