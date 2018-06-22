@@ -32,7 +32,7 @@ Plug 'slashmili/alchemist.vim' " Vim tooling for Elixir
 Plug 'pangloss/vim-javascript' " Vim-javascript
 Plug 'eagletmt/neco-ghc' " Autocompletion for Haskell
 Plug 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
-Plug 'Shougo/vimproc.vim' " Vimproc for GHC-mod
+Plug 'Shougo/vimproc.vim', {'do': 'make'} " Vimproc for GHC-mod
 Plug 'elmcast/elm-vim' " Elm support
 Plug 'pbogut/deoplete-elm' " Deoplete plugin for Elm
 Plug 'idris-hackers/idris-vim' " Idris support
@@ -118,8 +118,7 @@ set background=dark
 " vim-pencil setup
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd,md call pencil#init()
-  autocmd FileType textile call pencil#init()
+  autocmd FileType markdown,mkd,md call pencil#init({'wrap': 'soft'})
 augroup END
 
 " vim-textobj-sentence setup
@@ -166,7 +165,7 @@ let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-autocmd filetype haskell setlocal shiftwidth=4 tabstop=4 expandtab
+autocmd Filetype haskell setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " Use eslint for JS
 let g:syntastic_javascript_checkers = ['eslint']
@@ -176,4 +175,4 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 
 let g:elm_syntastic_show_warnings = 1
-autocmd FileType elm setlocal shiftwidth=4 tabstop=4 expandtab
+autocmd FileType elm setlocal shiftwidth=4 softtabstop=4 expandtab
