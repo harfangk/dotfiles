@@ -116,8 +116,13 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # asdf version manager setup
 . $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 export PATH="${PATH}:$HOME/.deliver/bin"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit
+compinit
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
