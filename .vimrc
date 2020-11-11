@@ -34,18 +34,9 @@ Plug 'eagletmt/neco-ghc' " Autocompletion for Haskell
 Plug 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
 Plug 'Shougo/vimproc.vim', {'do': 'make'} " Vimproc for GHC-mod
 Plug 'elmcast/elm-vim' " Elm support
-Plug 'pbogut/deoplete-elm' " Deoplete plugin for Elm
 Plug 'idris-hackers/idris-vim' " Idris support
 Plug 'raichoo/purescript-vim' " Purescript support
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-" Deoplete setup
-let g:deoplete#enable_at_startup = 1
+Plug 'neoclide/coc.nvim' " Autocomplete
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
