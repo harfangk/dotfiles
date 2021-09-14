@@ -24,19 +24,8 @@ Plug 'reedes/vim-litecorrect' " Lightweight auto-correction for Vim
 Plug 'raimondi/delimitMate' " Autoclose parantheses
 Plug 'mattn/emmet-vim' " Expanding HTML abbreviations support
 Plug 'mattn/webapi-vim' " vim interface to Web API. Installed for custom emmet snippet supprt
-Plug 'tpope/vim-ragtag' " Mapping for HTML,XML, ERB and more
-Plug 'vim-ruby/vim-ruby' " Vim-ruby
 Plug 'christoomey/vim-tmux-navigator' " Allow seamless transition between vim splits and tmux panes
-Plug 'elixir-lang/vim-elixir' " Vim-elixir
-Plug 'slashmili/alchemist.vim' " Vim tooling for Elixir
-Plug 'pangloss/vim-javascript' " Vim-javascript
-Plug 'eagletmt/neco-ghc' " Autocompletion for Haskell
-Plug 'eagletmt/ghcmod-vim' " Vim support for GHC-mod
-Plug 'Shougo/vimproc.vim', {'do': 'make'} " Vimproc for GHC-mod
-Plug 'elmcast/elm-vim' " Elm support
-Plug 'idris-hackers/idris-vim' " Idris support
-Plug 'raichoo/purescript-vim' " Purescript support
-Plug 'neoclide/coc.nvim' " Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Autocomplete
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
