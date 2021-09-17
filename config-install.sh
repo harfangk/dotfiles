@@ -1,5 +1,5 @@
-git clone --bare https://www.github.com/harfangk/dotfiles.git $HOME/.dotfiles
-function dotfiles {
+git clone --bare git@github.com:harfangk/dotfiles.git $HOME/.dotfiles
+function dotfiles() {
   /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
 
