@@ -132,3 +132,5 @@ bindkey "${terminfo[kdch1]}" delete-char
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+export PATH="$HOME/.cargo/bin:$PATH"
