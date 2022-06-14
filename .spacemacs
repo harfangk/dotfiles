@@ -32,8 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(rust
-     ;; ----------------------------------------------------------------
+   '(;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (dart Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
@@ -51,6 +50,7 @@ This function should only modify configuration layer settings."
           )
      elixir
      emacs-lisp
+     graphql
      (haskell :variables
               haskell-completion-backend 'lsp
               haskell-enable-hindent t
@@ -63,10 +63,9 @@ This function should only modify configuration layer settings."
                  js2-mode-show-strict-warnings nil
       )
      json
-     kotlin
      markdown
      python
-     ruby
+     rust
      typescript
      yaml
 
@@ -604,7 +603,6 @@ before packages are loaded."
   (set-fontset-font "fontset-default" '(#xd7b0 . #xd7ff) '("D2Coding" . "iso10646"))
   (set-fontset-font "fontset-default" '(#xffa1 . #xffdc) '("D2Coding" . "iso10646"))
   (set-fontset-font "fontset-default" '#xffe6 '("D2Coding" . "iso10646"))
-  (setq lsp-enable-file-watchers nil)
   (setq projectile-project-search-path '("~/Projects/"))
   (setq undo-tree-auto-save-history nil)
 )

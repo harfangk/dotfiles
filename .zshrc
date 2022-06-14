@@ -72,29 +72,27 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  asdf
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
-# Path for Haskell Stack
-export PATH="$HOME/.local/bin:$PATH"
-
-# Path for Snap package manager
-export PATH="$PATH:/snap/bin"
-
 setopt AUTO_CD
 
-# asdf setup
-. $HOME/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
+case "$OSTYPE" in
+  darwin*)
+    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+  ;;
+  linux*)
+    . $HOME/.asdf/asdf.sh
+    fpath=(${ASDF_DIR}/completions $fpath)
+    autoload -Uz compinit && compinit
+  ;;
+  dragonfly*|freebsd*|netbsd*|openbsd*)
+    # commands for FreeBSD go here
+  ;;
+esac
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -132,5 +130,3 @@ bindkey "${terminfo[kdch1]}" delete-char
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-
-export PATH="$HOME/.cargo/bin:$PATH"
