@@ -37,36 +37,51 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (dart Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     auto-completion
+     better-defaults
+     ivy
      spell-checking
      syntax-checking
-     auto-completion
-     ivy
-     better-defaults
 
      csv
      (elm :variables
           elm-sort-imports-on-save t
           elm-format-on-save t
           )
-     elixir
+     (elixir :variables
+             elixir-backend 'alchemist
+     )
      emacs-lisp
      graphql
      (haskell :variables
               haskell-completion-backend 'lsp
               haskell-enable-hindent t
               )
-     html
+     (html :variables
+           web-mode-code-indent-offset 2
+           web-mode-markup-indent-offset 2
+           web-mode-css-indent-offset 2
+           web-mode-script-padding 2
+      )
      (javascript :variables
                  javascript-import-tool 'import-js
                  javascript-fmt-tool 'prettier
                  javascript-fmt-on-save t
                  js2-mode-show-strict-warnings nil
+                 js2-basic-offset 2
+                 js-indent-level 2
       )
      json
      markdown
      python
      rust
-     typescript
+     (typescript :variables
+                 typescript-fmt-on-save t
+                 typescript-backend 'lsp
+                 typescript-lsp-linter nil
+                 typescript-linter 'eslint
+                 typescript-indent-level 2
+      )
      yaml
 
      git
@@ -605,6 +620,19 @@ before packages are loaded."
   (set-fontset-font "fontset-default" '#xffe6 '("D2Coding" . "iso10646"))
   (setq projectile-project-search-path '("~/Projects/"))
   (setq undo-tree-auto-save-history nil)
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+           (eslint
+            (and root
+                 (expand-file-name "node_modules/.bin/eslint"
+                                   root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp--formatting-indent-alist '(typescript-tsx-mode . typescript-indent-level)))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -621,7 +649,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(toml-mode ron-mode racer rust-mode helm-gtags helm helm-core ggtags flycheck-rust counsel-gtags cargo kotlin-mode flycheck-kotlin lsp-dart dap-mode bui flutter dart-server dart-mode csv-mode yapfify yaml-mode xterm-color xkcd ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree underwater-theme treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org tide terminal-here tagedit symon symbol-overlay sublime-themes string-inflection string-edit sphinx-doc spaceline-all-the-icons spacegray-theme smex smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters pytest pyenv-mode py-isort pug-mode prettier-js popwin poetry pippel pipenv pip-requirements password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-brain open-junk-file ob-elixir npm-mode nose nodejs-repl nameless mwim multi-term multi-line mmm-mode minitest markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum live-py-mode link-hint json-navigator json-mode js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide importmagic impatient-mode hybrid-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-make haskell-snippets google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flycheck-elm flycheck-credo flx-ido flatland-theme fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emmet-mode elm-test-runner elm-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word dante cython-mode counsel-projectile counsel-css company-web company-cabal company-anaconda column-enforce-mode cmm-mode clean-aindent-mode chruby centered-cursor-mode bundler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile attrap alchemist aggressive-indent ace-link ac-ispell))
+   '(tree-sitter-langs tree-sitter tsc exec-path-from-shell toml-mode ron-mode racer rust-mode helm-gtags helm helm-core ggtags flycheck-rust counsel-gtags cargo kotlin-mode flycheck-kotlin lsp-dart dap-mode bui flutter dart-server dart-mode csv-mode yapfify yaml-mode xterm-color xkcd ws-butler writeroom-mode winum which-key wgrep web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill undo-tree underwater-theme treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org tide terminal-here tagedit symon symbol-overlay sublime-themes string-inflection string-edit sphinx-doc spaceline-all-the-icons spacegray-theme smex smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters pytest pyenv-mode py-isort pug-mode prettier-js popwin poetry pippel pipenv pip-requirements password-generator paradox overseer orgit-forge org-superstar org-rich-yank org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-brain open-junk-file ob-elixir npm-mode nose nodejs-repl nameless mwim multi-term multi-line mmm-mode minitest markdown-toc magit-svn magit-section magit-gitflow macrostep lorem-ipsum live-py-mode link-hint json-navigator json-mode js-doc ivy-yasnippet ivy-xref ivy-purpose ivy-hydra ivy-avy indent-guide importmagic impatient-mode hybrid-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-make haskell-snippets google-translate golden-ratio gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-haskell flycheck-elsa flycheck-elm flycheck-credo flx-ido flatland-theme fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr emmet-mode elm-test-runner elm-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dotenv-mode dired-quick-sort diminish devdocs define-word dante cython-mode counsel-projectile counsel-css company-web company-cabal company-anaconda column-enforce-mode cmm-mode clean-aindent-mode chruby centered-cursor-mode bundler browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile attrap alchemist aggressive-indent ace-link ac-ispell))
  '(warning-suppress-log-types '((comp)))
  '(warning-suppress-types '((comp))))
 (custom-set-faces
