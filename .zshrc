@@ -104,7 +104,8 @@ esac
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR="vim"
+alias nvim=lvim
+export EDITOR="lvim"
 bindkey -v
 
 bindkey '^R' history-incremental-search-backward
