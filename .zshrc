@@ -135,3 +135,8 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+
+# pnpm
+export PNPM_HOME="/Users/bonghyunkim/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
