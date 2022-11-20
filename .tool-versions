@@ -3,3 +3,4 @@ erlang 25.0.1
 python 3.10.5
 ruby 3.1.2
 nodejs 16.15.1
+golang 1.19.2
