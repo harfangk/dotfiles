@@ -179,7 +179,9 @@ lvim.builtin.treesitter.rainbow.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
-  { "phha/zenburn.nvim" },
+  { "phha/zenburn.nvim",
+    config = function() require("zenburn").setup() end
+  },
   { "duane9/nvim-rg" },
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
