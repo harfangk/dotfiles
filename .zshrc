@@ -140,3 +140,4 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 export PNPM_HOME="/Users/bonghyunkim/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+[ -f "/home/bonghyunkim/.ghcup/env" ] && source "/home/bonghyunkim/.ghcup/env" # ghcup-env
