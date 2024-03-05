@@ -82,7 +82,9 @@ setopt AUTO_CD
 
 case "$OSTYPE" in
   darwin*)
-    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+    . $HOME/.asdf/asdf.sh
+    fpath=(${ASDF_DIR}/completions $fpath)
+    autoload -Uz compinit && compinit
   ;;
   linux*)
     . $HOME/.asdf/asdf.sh
@@ -135,9 +137,24 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-
 # pnpm
 export PNPM_HOME="/Users/bonghyunkim/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-[ -f "/home/bonghyunkim/.ghcup/env" ] && source "/home/bonghyunkim/.ghcup/env" # ghcup-env
+
+# ghcup-env
+[ -f "/home/bonghyunkim/.ghcup/env" ] && source "/home/bonghyunkim/.ghcup/env"
+
+# fly.io
+export FLYCTL_INSTALL="/home/bonghyunkim/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+# Android Studio
+export ANDROID_STUDIO_PATH="/home/bonghyunkim/Projects/android-studio"
+export PATH="$ANDROID_STUDIO_PATH/bin:$PATH"
+
+# Dart Pubs
+export PATH="$PATH:$HOME/.pub-cache/bin"
+
+# Rust
+export PATH="$PATH:$HOME/.asdf/installs/rust/1.76.0/bin"

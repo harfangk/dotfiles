@@ -12,6 +12,7 @@ lvim.log.level = "info"
 lvim.format_on_save = true
 vim.opt.foldmethod = "expr"                     -- folding set to "expr" for treesitter based folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+vim.opt.foldenable = false
 vim.opt.guifont = "Hasklug Nerd Font Mono:h17"  -- the font used in graphical neovim applications
 vim.opt.smartindent = true                      -- make indenting smarter again
 vim.opt.updatetime = 300                        -- faster completion
@@ -55,7 +56,7 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.highlight.enable = true
-lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.treesitter.rainbow.enable = false
 
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
@@ -126,7 +127,7 @@ lvim.plugins = {
       require("nvim-ts-autotag").setup()
     end,
   },
-  { "p00f/nvim-ts-rainbow" },
+  { url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" },
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
@@ -138,6 +139,20 @@ lvim.plugins = {
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
+  },
+  { "mfussenegger/nvim-dap" },
+  {
+    'mrcjkb/haskell-tools.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim', -- optional
+    },
+    branch = '2.x.x',                  -- recommended
+    ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    commit = "e49b1e90c1781ce372013de3fa93a91ea29fc34a"
   }
 }
 

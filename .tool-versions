@@ -1,7 +1,10 @@
-elixir 1.15.4
-erlang 26.0.2
-python 3.10.5
-ruby 3.1.2
-nodejs 18.12.1
+elixir 1.16.1-otp-26
+erlang 26.2.2
+python 3.12.2
+ruby 3.3.0
+nodejs 20.11.1
 golang 1.20.6
 solidity 0.8.17
+jq 1.7.1
+flutter 3.16.9
+rust 1.76.0
