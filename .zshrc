@@ -156,5 +156,8 @@ export PATH="$ANDROID_STUDIO_PATH/bin:$PATH"
 # Dart Pubs
 export PATH="$PATH:$HOME/.pub-cache/bin"
 
-# Rust
-export PATH="$PATH:$HOME/.asdf/installs/rust/1.76.0/bin"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/bonghyunkim/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/bonghyunkim/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/bonghyunkim/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bonghyunkim/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
