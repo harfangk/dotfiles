@@ -31,6 +31,7 @@ call plug#end()            " required
 filetype plugin indent on    " required
 
 syntax on
+set re=0
 
 " General settings
 set history=700 " Lines of vim history

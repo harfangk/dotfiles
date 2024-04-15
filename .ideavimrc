@@ -1,3 +1,12 @@
-source ~/.vimrc
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'machakann/vim-highlightedyank'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'tommcdo/vim-exchange'
+Plug 'vim-scripts/ReplaceWithRegister'
+
+set clipboard+=unnamedplus
 
 nnoremap <space>s :w<CR>:action Flutter.Toolbar.ReloadAction<CR>

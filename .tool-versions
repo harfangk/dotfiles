@@ -1,6 +1,6 @@
 elixir 1.16.1-otp-26
 erlang 26.2.2
-python 3.12.2
+python 3.11.8
 ruby 3.3.0
 nodejs 20.11.1
 jq 1.7.1
