@@ -80,21 +80,8 @@ source $ZSH/oh-my-zsh.sh
 
 setopt AUTO_CD
 
-case "$OSTYPE" in
-  darwin*)
-    . $HOME/.asdf/asdf.sh
-    fpath=(${ASDF_DIR}/completions $fpath)
-    autoload -Uz compinit && compinit
-  ;;
-  linux*)
-    . $HOME/.asdf/asdf.sh
-    fpath=(${ASDF_DIR}/completions $fpath)
-    autoload -Uz compinit && compinit
-  ;;
-  dragonfly*|freebsd*|netbsd*|openbsd*)
-    # commands for FreeBSD go here
-  ;;
-esac
+export ASDF_DATA_DIR=/Users/bonghyunkim/.asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -130,15 +117,8 @@ bindkey "${terminfo[kdch1]}" delete-char
 
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+alias git='LANG=en_US git'
 
-# pnpm
-export PNPM_HOME="/Users/bonghyunkim/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
-# ghcup-env
 [ -f "/home/bonghyunkim/.ghcup/env" ] && source "/home/bonghyunkim/.ghcup/env"
 
 # fly.io
@@ -157,3 +137,6 @@ if [ -f '/Users/bonghyunkim/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/bonghyunkim/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bonghyunkim/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f "/Users/bonghyunkim/.ghcup/env" ] && . "/Users/bonghyunkim/.ghcup/env" # ghcup-env
+
