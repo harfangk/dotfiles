@@ -1,0 +1,41 @@
+[user]
+	name = Bonghyun Kim
+	email = bonghyun.d.kim@gmail.com
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[push]
+	autoSetupRemote = true
+  default = simple
+  followTags = true
+[help]
+  autocorrect = prompt
+[commit]
+  verbose = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[core]
+	excludesfile = /Users/bonghyunkim/.gitignore_global
+[pull]
+  rebase = true
+[commit]
+	template = /Users/bonghyunkim/.stCommitMsg
